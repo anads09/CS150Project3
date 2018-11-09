@@ -1,7 +1,7 @@
 /*
 Austin Nadler
 CS150-002
-Program #2
+Program #3
 11/13/2018
 */
 package cs150proj03;
@@ -25,7 +25,8 @@ public class Player implements Comparable<Player>{
     private static final String BRONZE_BADGE = "Bronze";
     private static final String SILVER_BADGE = "Silver";
     private static final String GOLD_BADGE = "Gold";
-    private static final String PLAT_BADGE = "Platinum";     
+    private static final String PLAT_BADGE = "Platinum";   
+    
     private final String name;
     private int playerLvl;
     private int totalXP, healerXP, explorerXP, socialiteXP, contributorXP, hoarderXP, fixerXP, joinerXP,leaderXP, punisherXP, obsessedXP;
@@ -62,43 +63,33 @@ public class Player implements Comparable<Player>{
         switch(n) {
             case 1:
                 heal();
-                calculatePlayerLevel();
                 break;
             case 2:
                 explore();
-                calculatePlayerLevel();
                 break;
             case 3:
                 encounterPlayer();
-                calculatePlayerLevel();
                 break;
             case 4:
                 createMap();
-                calculatePlayerLevel();
                 break;
             case 5:
                 gatherItem();
-                calculatePlayerLevel();
                 break;
             case 6:
                 itemRepaired();
-                calculatePlayerLevel();
                 break;
             case 7:
                 mergeItems();
-                calculatePlayerLevel();
                 break;
             case 8:
                 topScore();
-                calculatePlayerLevel();
                 break;
             case 9:
                 assault();
-                calculatePlayerLevel();
                 break;
             case 10:
                 completeMap();
-                calculatePlayerLevel();
                 break;
             default: 
                 break;                         
@@ -108,199 +99,236 @@ public class Player implements Comparable<Player>{
     public void heal() {
         healerXP++;
         totalXP += HEAL_XP;
-        if (healerXP < 2000)
-            healerBadge = NO_BADGE;
-        else if(healerXP < 10000)
+        final int TINBADGEXP = 2000;
+        final int BRONZEBADGEXP = 10000;
+        final int SILVERBADGEXP = 30000;
+        final int GOLDBADGEXP = 10000;
+        final int PLATBADGEXP = 200000;
+        if(healerXP <= TINBADGEXP)
             healerBadge = TIN_BADGE;
-        else if (healerXP < 30000)
+        else if (healerXP <= BRONZEBADGEXP)
             healerBadge = BRONZE_BADGE;
-        else if (healerXP < 100000)
+        else if (healerXP <= SILVERBADGEXP)
             healerBadge = SILVER_BADGE;
-        else if (healerXP < 200000)
+        else if (healerXP <= GOLDBADGEXP)
             healerBadge = GOLD_BADGE;
-        else if (healerXP >= 200000) 
+        else if (healerXP >= PLATBADGEXP) 
             healerBadge = PLAT_BADGE;
-        
+        calculatePlayerLevel();
     }
     
     public void explore() {
         explorerXP++;
         totalXP += AREA_VISITED_XP;
-        if(explorerXP < 50)
-            explorerBadge = NO_BADGE;
-        else if(explorerXP < 1000)
-            explorerBadge = TIN_BADGE;
-        else if (explorerXP < 5000)
+        final int BRONZEBADGEXP = 1000;
+        final int SILVERBADGEXP = 5000;
+        final int GOLDBADGEXP = 17000;
+        final int PLATBADGEXP = 40000;        
+        if (explorerXP <= BRONZEBADGEXP)
             explorerBadge = BRONZE_BADGE;
-        else if (explorerXP < 17000)
+        else if (explorerXP <= SILVERBADGEXP)
             explorerBadge = SILVER_BADGE;
-        else if (explorerXP < 40000)
+        else if (explorerXP <= GOLDBADGEXP)
             explorerBadge = GOLD_BADGE;
-        else if (explorerXP >= 40000) 
+        else if (explorerXP >= PLATBADGEXP) 
             explorerBadge = PLAT_BADGE;
+        calculatePlayerLevel();
+        
     }
     
     public void encounterPlayer () {
         socialiteXP++;
         totalXP += PLAYER_ENCOUNTERED_XP;
-        if(socialiteXP < 100)
-            socialiteBadge = NO_BADGE;
-        else if(socialiteXP < 1000)
+        final int TINBADGEXP = 100;
+        final int BRONZEBADGEXP = 1000;
+        final int SILVERBADGEXP = 2000;
+        final int GOLDBADGEXP = 10000;
+        final int PLATBADGEXP = 30000;
+        if(socialiteXP <= TINBADGEXP)
             socialiteBadge = TIN_BADGE;
-        else if (socialiteXP < 2000)
+        else if (socialiteXP <= BRONZEBADGEXP)
             socialiteBadge = BRONZE_BADGE;
-        else if (socialiteXP < 10000)
+        else if (socialiteXP <= SILVERBADGEXP)
             socialiteBadge = SILVER_BADGE;
-        else if (socialiteXP < 30000)
+        else if (socialiteXP <= GOLDBADGEXP)
             socialiteBadge = GOLD_BADGE;
-        else if (socialiteXP >= 30000) 
+        else if (socialiteXP >= PLATBADGEXP)
             socialiteBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void createMap() {
         contributorXP++;
         totalXP += MAP_CREATED_XP;
-        if(contributorXP < 3)
-            contributorBadge = NO_BADGE;
-        else if(contributorXP < 10)
+        final int TINBADGEXP = 3;
+        final int BRONZEBADGEXP = 10;
+        final int SILVERBADGEXP = 20;
+        final int GOLDBADGEXP = 90;
+        final int PLATBADGEXP = 150;
+        if(contributorXP >= TINBADGEXP)
             contributorBadge = TIN_BADGE;
-        else if (contributorXP < 20)
+        else if (contributorXP >= BRONZEBADGEXP)
             contributorBadge = BRONZE_BADGE;
-        else if (contributorXP < 90)
+        else if (contributorXP >= SILVERBADGEXP)
             contributorBadge = SILVER_BADGE;
-        else if (contributorXP < 150)
+        else if (contributorXP >= GOLDBADGEXP)
             contributorBadge = GOLD_BADGE;
-        else if (contributorXP >= 150) 
+        else if (contributorXP >= PLATBADGEXP) 
             contributorBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void gatherItem() {
         hoarderXP++;
         totalXP += ITEM_GATHERED_XP;
-        if(hoarderXP < 2000)
-            hoarderBadge = NO_BADGE;
-        else if(hoarderXP < 10000)
+        final int TINBADGEXP = 2000;
+        final int BRONZEBADGEXP = 10000;
+        final int SILVERBADGEXP = 30000;
+        final int GOLDBADGEXP = 100000;
+        final int PLATBADGEXP = 200000;
+        if(hoarderXP <= TINBADGEXP)
             hoarderBadge = TIN_BADGE;
-        else if (hoarderXP < 30000)
+        else if (hoarderXP <= BRONZEBADGEXP)
             hoarderBadge = BRONZE_BADGE;
-        else if (hoarderXP < 100000)
+        else if (hoarderXP <= SILVERBADGEXP)
             hoarderBadge = SILVER_BADGE;
-        else if (hoarderXP < 200000)
+        else if (hoarderXP <= GOLDBADGEXP)
             hoarderBadge = GOLD_BADGE;
-        else if (hoarderXP >= 200000) 
+        else if (hoarderXP >= PLATBADGEXP) 
             hoarderBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void itemRepaired() {
         fixerXP++;
         totalXP += ITEM_REPAIRED_XP;
-        if(fixerXP < 100)
-            fixerBadge = NO_BADGE;
-        else if(fixerXP < 1000)
+        final int TINBADGEXP = 100;
+        final int BRONZEBADGEXP = 1000;
+        final int SILVERBADGEXP = 5000;
+        final int GOLDBADGEXP = 15000;
+        final int PLATBADGEXP = 40000;
+        if(fixerXP <= TINBADGEXP)
             fixerBadge = TIN_BADGE;
-        else if (fixerXP < 5000)
+        else if (fixerXP <= BRONZEBADGEXP)
             fixerBadge = BRONZE_BADGE;
-        else if (fixerXP < 15000)
+        else if (fixerXP <= SILVERBADGEXP)
             fixerBadge = SILVER_BADGE;
-        else if (fixerXP < 40000)
+        else if (fixerXP <= GOLDBADGEXP)
             fixerBadge = GOLD_BADGE;
-        else if (fixerXP >= 40000) 
+        else if (fixerXP >= PLATBADGEXP) 
             fixerBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void mergeItems() {
         joinerXP++;
         totalXP += ITEMS_MERGED_XP;
-        if(joinerXP < 100)
-            joinerBadge = NO_BADGE;
-        else if(joinerXP < 1000)
+        final int TINBADGEXP = 100;
+        final int BRONZEBADGEXP = 1000;
+        final int SILVERBADGEXP = 5000;
+        final int GOLDBADGEXP = 15000;
+        final int PLATBADGEXP = 40000;
+        if(joinerXP <= TINBADGEXP)
             joinerBadge = TIN_BADGE;
-        else if (joinerXP < 5000)
+        else if (joinerXP <= BRONZEBADGEXP)
             joinerBadge = BRONZE_BADGE;
-        else if (joinerXP < 15000)
+        else if (joinerXP <= SILVERBADGEXP)
             joinerBadge = SILVER_BADGE;
-        else if (joinerXP < 40000)
+        else if (joinerXP <= GOLDBADGEXP)
             joinerBadge = GOLD_BADGE;
-        else if (joinerXP >= 40000) 
+        else if (joinerXP >= PLATBADGEXP) 
             joinerBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void topScore() {
         leaderXP++;
         totalXP += TOP_SCORE_XP;
-        if(leaderXP < 20)
-            leaderBadge = NO_BADGE;
-        else if(leaderXP < 200)
+        final int TINBADGEXP = 20;
+        final int BRONZEBADGEXP = 200;
+        final int SILVERBADGEXP = 1000;
+        final int GOLDBADGEXP = 5000;
+        final int PLATBADGEXP = 20000;
+        if(leaderXP <= TINBADGEXP)
             leaderBadge = TIN_BADGE;
-        else if (leaderXP < 1000)
+        else if (leaderXP <= BRONZEBADGEXP)
             leaderBadge = BRONZE_BADGE;
-        else if (leaderXP < 5000)
+        else if (leaderXP <= SILVERBADGEXP)
             leaderBadge = SILVER_BADGE;
-        else if (leaderXP < 20000)
+        else if (leaderXP <= GOLDBADGEXP)
             leaderBadge = GOLD_BADGE;
-        else if (leaderXP >= 20000) 
+        else if (leaderXP >= PLATBADGEXP) 
             leaderBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void assault() {
         punisherXP++;
         totalXP += DAMAGE_DEALT_XP;
-        if(punisherXP < 2000)
-            punisherBadge = NO_BADGE;
-        else if(punisherXP < 10000)
+        final int TINBADGEXP = 2000;
+        final int BRONZEBADGEXP = 10000;
+        final int SILVERBADGEXP = 30000;
+        final int GOLDBADGEXP = 100000;
+        final int PLATBADGEXP = 300000;
+        if(punisherXP <= TINBADGEXP)
             punisherBadge = TIN_BADGE;
-        else if (punisherXP < 30000)
+        else if (punisherXP <= 30000)
             punisherBadge = BRONZE_BADGE;
-        else if (punisherXP < 100000)
+        else if (punisherXP <= BRONZEBADGEXP)
             punisherBadge = SILVER_BADGE;
-        else if (punisherXP < 300000)
+        else if (punisherXP <= SILVERBADGEXP)
             punisherBadge = GOLD_BADGE;
-        else if (punisherXP >= 300000) 
+        else if (punisherXP >= PLATBADGEXP) 
             punisherBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void completeMap() {
         obsessedXP++;
         totalXP += MAP_COMPLETED_XP;
-        if(obsessedXP < 2000)
-            obsessedBadge = NO_BADGE;
-        else if(obsessedXP < 10000)
+        final int TINBADGEXP = 10;
+        final int BRONZEBADGEXP = 50;
+        final int SILVERBADGEXP = 200;
+        final int GOLDBADGEXP = 500;
+        final int PLATBADGEXP = 5000;
+        if(obsessedXP <= TINBADGEXP)
             obsessedBadge = TIN_BADGE;
-        else if (obsessedXP < 30000)
+        else if (obsessedXP <= BRONZEBADGEXP)
             obsessedBadge = BRONZE_BADGE;
-        else if (obsessedXP < 100000)
+        else if (obsessedXP <= SILVERBADGEXP)
             obsessedBadge = SILVER_BADGE;
-        else if (obsessedXP < 300000)
+        else if (obsessedXP <= GOLDBADGEXP)
             obsessedBadge = GOLD_BADGE;
-        else if (obsessedXP >= 300000) 
+        else if (obsessedXP >= PLATBADGEXP) 
             obsessedBadge = PLAT_BADGE;
+        calculatePlayerLevel();
     }
     
     public void calculatePlayerLevel() {
-        if (totalXP < 10000)
-            this.playerLvl = 1;
-            else if (totalXP < 25000)
-                this.playerLvl = 2;
-            else if (totalXP < 80000)
-               this.playerLvl = 3;
-            else if (totalXP < 150000)
-                this.playerLvl = 4;
-            else if (totalXP < 300000)
-                this.playerLvl = 5;
-            else if (totalXP < 1000000)
-                this.playerLvl = 6;
-            else if (totalXP < 2200000)
-                this.playerLvl = 7;
-            else if (totalXP < 4500000)
-                this.playerLvl = 8;
-            else if (totalXP < 10000000)
-                this.playerLvl = 9;
-            else if (totalXP < 20000000)
-                this.playerLvl = 10;
-            else if (totalXP < 35000000)
-                this.playerLvl = 11;
-            else if (totalXP >= 35000000)
-                this.playerLvl = 12;
+        if (totalXP <= 10000)
+            playerLvl = 1;
+        else if (totalXP <= 25000)
+            playerLvl = 2;
+        else if (totalXP <= 80000)
+           playerLvl = 3;
+        else if (totalXP <= 150000)
+            playerLvl = 4;
+        else if (totalXP <= 300000)
+            playerLvl = 5;
+        else if (totalXP <= 1000000)
+            playerLvl = 6;
+        else if (totalXP <= 2200000)
+            playerLvl = 7;
+        else if (totalXP <= 4500000)
+            playerLvl = 8;
+        else if (totalXP <= 10000000)
+            playerLvl = 9;
+        else if (totalXP <= 20000000)
+            playerLvl = 10;
+        else if (totalXP <= 35000000)
+            playerLvl = 11;
+        else if (totalXP >= 35000000)
+            playerLvl = 12;
     }
     
     @Override

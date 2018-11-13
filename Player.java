@@ -117,6 +117,7 @@ public class Player implements Comparable<Player>{
         }
     }
      public void calcPlayerLevel() {
+        // level "floors" (min amount of totalXP needed to reach each level
         final int lvl2FLR = 10000;
         final int lvl3FLR = 25000;
         final int lvl4FLR = 80000;
@@ -139,13 +140,13 @@ public class Player implements Comparable<Player>{
             else if (totalXP >= lvl8FLR)
                 playerLvl = 8;   
             else if (totalXP >= lvl7FLR)
-               playerLvl = 7;
+                playerLvl = 7;
             else if (totalXP >= lvl6FLR)
                 playerLvl = 6;    
             else if (totalXP >= lvl5FLR)
                 playerLvl = 5;   
             else if (totalXP >= lvl4FLR)
-               playerLvl = 4;  
+                playerLvl = 4;  
             else if (totalXP >= lvl3FLR)
                 playerLvl = 3;  
             else if( totalXP >= lvl2FLR)

@@ -20,20 +20,21 @@ public class Player implements Comparable<Player>{
     private static final int TOP_SCORE_XP = 250;
     private static final int DAMAGE_DEALT_XP = 17;
     private static final int MAP_COMPLETED_XP = 750; 
+    private static final int NUM_ACTIONS = 10;
     private final String name;
     private int playerLvl;
     public int totalXP, healerXP, explorerXP, socialiteXP, contributorXP, hoarderXP, fixerXP, joinerXP,leaderXP, punisherXP, obsessedXP;
                              //           tin  bronze silver  gold    platinum -- each badge has different amounts of XP needed for higher levels
-    private Badge healerBadge = new Badge(2000, 10000, 30000, 100000, 200000);
-    private Badge explorerBadge = new Badge(50, 1000, 5000, 17000, 40000);
-    private Badge socialiteBadge = new Badge(100, 1000, 2000, 10000, 30000);
-    private Badge contributorBadge = new Badge(3, 10, 20, 90, 150);
-    private Badge hoarderBadge = new Badge(2000, 10000, 30000, 100000, 200000);
-    private Badge fixerBadge = new Badge(100, 1000, 5000, 15000, 40000);
-    private Badge joinerBadge = new Badge(100, 500, 2000, 10000, 40000);
-    private Badge leaderBadge = new Badge(20, 10000, 30000, 100000, 300000);
-    private Badge punisherBadge = new Badge(2000, 10000, 30000, 100000, 300000);
-    private Badge obsessedBadge = new Badge(10, 50, 200, 500, 5000);
+    private final Badge healerBadge = new Badge(2000, 10000, 30000, 100000, 200000);
+    private final Badge explorerBadge = new Badge(50, 1000, 5000, 17000, 40000);
+    private final Badge socialiteBadge = new Badge(100, 1000, 2000, 10000, 30000);
+    private final Badge contributorBadge = new Badge(3, 10, 20, 90, 150);
+    private final Badge hoarderBadge = new Badge(2000, 10000, 30000, 100000, 200000);
+    private final Badge fixerBadge = new Badge(100, 1000, 5000, 15000, 40000);
+    private final Badge joinerBadge = new Badge(100, 500, 2000, 10000, 40000);
+    private final Badge leaderBadge = new Badge(20, 10000, 30000, 100000, 300000);
+    private final Badge punisherBadge = new Badge(2000, 10000, 30000, 100000, 300000);
+    private final Badge obsessedBadge = new Badge(10, 50, 200, 500, 5000);
     
     public Player(String name) {
         this.name = name;
@@ -52,7 +53,7 @@ public class Player implements Comparable<Player>{
     }
     
     public void doSomething() {
-        int n = (int)(Math.random() * 10 + 1);
+        int n = (int)(Math.random() * NUM_ACTIONS + 1);
         switch(n) {
             case 1:
                 healerXP++;
@@ -117,7 +118,7 @@ public class Player implements Comparable<Player>{
         }
     }
      public void calcPlayerLevel() {
-        // level "floors" (min amount of totalXP needed to reach each level
+         // level "floors" (min amount of totalXP needed to reach each level
         final int lvl2FLR = 10000;
         final int lvl3FLR = 25000;
         final int lvl4FLR = 80000;
@@ -140,13 +141,13 @@ public class Player implements Comparable<Player>{
             else if (totalXP >= lvl8FLR)
                 playerLvl = 8;   
             else if (totalXP >= lvl7FLR)
-                playerLvl = 7;
+               playerLvl = 7;
             else if (totalXP >= lvl6FLR)
                 playerLvl = 6;    
             else if (totalXP >= lvl5FLR)
                 playerLvl = 5;   
             else if (totalXP >= lvl4FLR)
-                playerLvl = 4;  
+               playerLvl = 4;  
             else if (totalXP >= lvl3FLR)
                 playerLvl = 3;  
             else if( totalXP >= lvl2FLR)

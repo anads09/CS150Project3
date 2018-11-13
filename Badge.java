@@ -19,7 +19,7 @@ public class Badge {
     private final int GOLDFLR;
     private final int PLATFLR;
     public String value;
-    
+    // Badge "floors" (minumum amount of badgeXP needed to reach each level)
     public Badge (int tinBadgeFLR, int bronzeBadgeFLR, int silverBadgeFLR, int goldBadgeFLR, int platBadgeFLR) {
         TINFLR = tinBadgeFLR;
         BRONZEFLR = bronzeBadgeFLR;

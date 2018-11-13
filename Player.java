@@ -23,7 +23,7 @@ public class Player implements Comparable<Player>{
     private final String name;
     private int playerLvl;
     public int totalXP, healerXP, explorerXP, socialiteXP, contributorXP, hoarderXP, fixerXP, joinerXP,leaderXP, punisherXP, obsessedXP;
-                             //           tin  bronze silver  gold    platinum
+                             //           tin  bronze silver  gold    platinum -- each badge has different amounts of XP needed for higher levels
     private Badge healerBadge = new Badge(2000, 10000, 30000, 100000, 200000);
     private Badge explorerBadge = new Badge(50, 1000, 5000, 17000, 40000);
     private Badge socialiteBadge = new Badge(100, 1000, 2000, 10000, 30000);

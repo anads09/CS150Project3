@@ -26,6 +26,7 @@ public class Badge {
         SILVERFLR = silverBadgeFLR;
         GOLDFLR = goldBadgeFLR;
         PLATFLR = platBadgeFLR;
+        value = BNONE;
     }
     
     public void setValue(int xp) {

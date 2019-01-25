@@ -1,0 +1,5 @@
+This program does not require any input.
+
+It creates players and has them perform random actions, which give them level xp as well as xp for that skill category.
+It loops a pre-determined number of times, and then uses comparators toprint the results in alphabetical order, then in
+order of greatest to least in total xp, and then in each skill category.

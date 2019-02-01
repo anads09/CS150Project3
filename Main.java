@@ -1,9 +1,3 @@
-/*
-Austin Nadler
-CS150-002
-Program #3
-11/13/2018
-*/
 package cs150proj03.game.sim;
 
 import java.util.ArrayList;

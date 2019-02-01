@@ -1,4 +1,4 @@
-package cs150proj03.game.sim;
+package expsim;
 
 import java.util.ArrayList;
 import java.util.Collections;

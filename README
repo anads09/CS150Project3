@@ -1,5 +1,7 @@
 This program does not require any input.
 
-It creates players and has them perform random actions, which give them level xp as well as xp for that skill category.
-It loops a pre-determined number of times, and then uses comparators toprint the results in alphabetical order, then in
-order of greatest to least in total xp, and then in each skill category.
+This program consists of a number of Players, who have different XP levels for several skills, called Badges, as well as an overall XP level.
+The players earn XP by randomly performing a series of actions, each of which increases their XP level for that Badge, as well
+as their overall XP level.
+
+The simulation has constant variables that change how long it runs for, and how often is prints the status to the screen.

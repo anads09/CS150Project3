@@ -18,17 +18,17 @@ public class Player implements Comparable<Player>{
     private final String name;
     private int playerLvl;
     public int totalXP, healerXP, explorerXP, socialiteXP, contributorXP, hoarderXP, fixerXP, joinerXP,leaderXP, punisherXP, obsessedXP;
-                             //           tin  bronze silver  gold    platinum -- each badge has different amounts of XP needed for higher levels
-    private final Badge healerBadge = new Badge(2000, 10000, 30000, 100000, 200000);
-    private final Badge explorerBadge = new Badge(50, 1000, 5000, 17000, 40000);
-    private final Badge socialiteBadge = new Badge(100, 1000, 2000, 10000, 30000);
+    //                                              tin    bronze silver gold    platinum -- each badge has different amounts of XP needed for higher levels
+    private final Badge healerBadge = new Badge     (2000, 10000, 30000, 100000, 200000);
+    private final Badge explorerBadge = new Badge   (50, 1000, 5000, 17000, 40000);
+    private final Badge socialiteBadge = new Badge  (100, 1000, 2000, 10000, 30000);
     private final Badge contributorBadge = new Badge(3, 10, 20, 90, 150);
-    private final Badge hoarderBadge = new Badge(2000, 10000, 30000, 100000, 200000);
-    private final Badge fixerBadge = new Badge(100, 1000, 5000, 15000, 40000);
-    private final Badge joinerBadge = new Badge(100, 500, 2000, 10000, 40000);
-    private final Badge leaderBadge = new Badge(20, 10000, 30000, 100000, 300000);
-    private final Badge punisherBadge = new Badge(2000, 10000, 30000, 100000, 300000);
-    private final Badge obsessedBadge = new Badge(10, 50, 200, 500, 5000);
+    private final Badge hoarderBadge = new Badge    (2000, 10000, 30000, 100000, 200000);
+    private final Badge fixerBadge = new Badge      (100, 1000, 5000, 15000, 40000);
+    private final Badge joinerBadge = new Badge     (100, 500, 2000, 10000, 40000);
+    private final Badge leaderBadge = new Badge     (20, 10000, 30000, 100000, 300000);
+    private final Badge punisherBadge = new Badge   (2000, 10000, 30000, 100000, 300000);
+    private final Badge obsessedBadge = new Badge   (10, 50, 200, 500, 5000);
     
     public Player(String name) {
         this.name = name;
@@ -58,8 +58,8 @@ public class Player implements Comparable<Player>{
             case 2:
                 explorerXP++;
                 totalXP += AREA_VISITED_XP;
-               explorerBadge.setValue(explorerXP);
-               calcPlayerLevel();
+                explorerBadge.setValue(explorerXP);
+                calcPlayerLevel();
                 break;
             case 3:
                 socialiteXP++;
@@ -88,8 +88,8 @@ public class Player implements Comparable<Player>{
             case 7:                
                 joinerXP++;
                 totalXP += ITEMS_MERGED_XP;
-                 joinerBadge.setValue(joinerXP);
-                 calcPlayerLevel();
+                joinerBadge.setValue(joinerXP);
+                calcPlayerLevel();
                 break;
             case 8:
                 leaderXP++;
